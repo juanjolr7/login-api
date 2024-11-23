@@ -1,0 +1,36 @@
+.sidenav-container {
+    height: 100vh;
+  }
+  
+  .sidenav {
+    width: 200px;
+  }
+  
+  .mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .dashboard-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  mat-card-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  mat-card-header mat-icon {
+    margin-right: 8px;
+  }
+  

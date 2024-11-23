@@ -1,0 +1,23 @@
+<mat-sidenav-container class="sidenav-container">
+    <!-- Aquí integramos el sidebar en el sidenav -->
+    <mat-sidenav mode="side" opened class="sidenav">
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <!-- Barra superior -->
+      <mat-toolbar color="primary">
+        <span>✨ Bienvenido al Dashboard</span>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="logout()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </mat-toolbar>
+  
+      <!-- Contenido principal -->
+      <div class="content">
+        <app-character-list/>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
