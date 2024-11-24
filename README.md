@@ -20,7 +20,7 @@ https://api.escuelajs.co/api/v1/users
 https://rickandmortyapi.com/api/character
 ```
 
-## Parte 1: Creación del Servicio para Consumir la API
+## Parte 1: Creación del Servicio para Consumir la API de Usuarios
 El servicio se encarga de realizar peticiones HTTP para obtener los datos de usuarios. A continuación, se muestra el código utilizado en user.service.ts:
 
 ```bash
@@ -45,7 +45,7 @@ Explicación:
 
 El método getUsers() utiliza el servicio HttpClient para realizar una solicitud GET a la API, devolviendo la lista de usuarios en formato JSON.
 
-## Parte 2: Creación del Servicio para Consumir la API
+## Parte 2: Creación del Servicio para Consumir la API de Personajes
 El servicio se encarga de realizar peticiones HTTP para obtener los datos de los personajes de Rick and Morty. A continuación, se muestra el código utilizado en character.service.ts:
 
 ```bash
@@ -144,7 +144,109 @@ Explicación:
 #### onSubmit() verifica si las credenciales ingresadas coinciden con las de la API.
 #### Si las credenciales son correctas, redirige a la página de usuarios; de lo contrario, muestra un mensaje de error.
 
-## Parte 4: Mostrar Lista de Personajes de Rick and Morty en una Tabla
+## Parte 4: Construccion del side-bar para la navegación.
+
+```bash
+<mat-toolbar color="primary">Menú</mat-toolbar>
+<mat-nav-list>
+  <a mat-list-item routerLink="/dashboard">🏠 Dashboard</a>
+  <button mat-list-item (click)="logout()">🚪 Logout</button>
+</mat-nav-list>
+```
+
+```bash
+import { Component } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+@Component({
+  selector: 'app-sidebar',
+  standalone: true,
+  imports: [RouterModule, MatListModule, MatIconModule, MatToolbarModule],
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
+})
+export class SidebarComponent {
+  constructor(private router: Router) {}
+
+  logout() {
+    this.router.navigate(['/login']);
+  }
+}
+```
+
+## Parte 5: Construccion del dashboard para cerrar sesión. 
+
+```bash
+<mat-sidenav-container class="sidenav-container">
+    <!-- Aquí integramos el sidebar en el sidenav -->
+    <mat-sidenav mode="side" opened class="sidenav">
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <!-- Barra superior -->
+      <mat-toolbar color="primary">
+        <span>✨ Bienvenido al Dashboard</span>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="logout()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </mat-toolbar>
+  
+      <!-- Contenido principal -->
+      <div class="content">
+        <app-character-list/>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+````
+
+```bash
+import { Component } from '@angular/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { SidebarComponent } from '../sidebar/sidebar.component';
+import { CharacterListComponent } from '../character-list/character-list.component';
+
+@Component({
+  selector: 'app-dashboard',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    SidebarComponent,
+    CharacterListComponent
+],
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
+})
+export class DashboardComponent {
+  constructor(private router: Router) {}
+
+  logout() {
+    this.router.navigate(['/login']);
+  }
+}
+```
+
+## Parte 6: Mostrar Lista de Personajes de Rick and Morty en una Tabla
 Una vez que el usuario ha iniciado sesión correctamente, se redirige a un componente que muestra una tabla con los personajes obtenidos de la API.
 
 Código del Componente de Lista de Personajes (character-list.component.html):
@@ -379,7 +481,7 @@ Explicación:
 #### openSeeDialog(character: Character) abre un modal para ver los datos del personaje pasado en la función.
 #### applyFilter(event: Event) aplica el filtro y busqueda sobre la tabla.
 
-## Parte 5: Ejecución del Proyecto
+## Parte 7: Ejecución del Proyecto
 Para ejecutar la aplicación:
 ```bash
 ng serve -o
@@ -396,5 +498,34 @@ ng serve -o
 ![Captura de pantalla 2024-11-16 201835](https://github.com/user-attachments/assets/e7aeba2e-d4f2-4a73-90c4-5862002bf321)
 
 
-### Lista de usuarios consumida del api
+### Lista de personajes consumida del api
 
+![Captura de pantalla 2024-11-23 213001](https://github.com/user-attachments/assets/d87384c7-cb15-4f49-aa79-4f4a1af12451)
+
+### Ver datos de uno de los personajes
+
+![Captura de pantalla 2024-11-23 213416](https://github.com/user-attachments/assets/4adea13b-59b1-4f03-935b-6491aa010f35)
+
+
+### Editar datos de uno de los personajes
+
+![Captura de pantalla 2024-11-23 213527](https://github.com/user-attachments/assets/844c51a5-f330-4491-88d4-859e997c539b)
+
+![Captura de pantalla 2024-11-23 213625](https://github.com/user-attachments/assets/88ee8554-cfe8-457c-b2d6-1f088f97d3e8)
+
+![Captura de pantalla 2024-11-23 213647](https://github.com/user-attachments/assets/01911aaf-37fc-4bd0-b35a-a658b94c92ef)
+
+
+### Eliminar registro de la tabla
+
+![image](https://github.com/user-attachments/assets/1c6f55fa-6639-4db3-8991-db4ca8f4c9a4)
+
+![Captura de pantalla 2024-11-23 213750](https://github.com/user-attachments/assets/b8bd7a25-8784-4065-8650-a80f0ddef8e0)
+
+![Captura de pantalla 2024-11-23 213810](https://github.com/user-attachments/assets/63133fca-40ba-48d0-b529-7f0d20d41d8f)
+
+## Conclusión
+
+El desarrollo de esta aplicación en Angular, que integra un sistema de autenticación y el consumo de API's públicas, lo cual permitió profundizar en conceptos clave del framework, como la creación de servicios, el uso de componentes reutilizables y la implementación de Angular Material para mejorar la interfaz de usuario. La separación entre la lógica de negocio y la presentación, lograda a través de los servicios, garantiza un código más modular y fácil de mantener.
+
+El sistema de login implementado, junto con la visualización, edición y eliminación de los personajes obtenidos desde una API externa, demuestra cómo Angular puede ser utilizado para construir aplicaciones escalables que interactúan de manera eficiente con servicios remotos. Implementar la carga, visualización, edición y eliminación de registros no solo mejora la experiencia del usuario, sino que también permite una mejor organización y gestión de los datos.
