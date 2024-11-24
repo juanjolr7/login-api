@@ -1,4 +1,4 @@
-# Reporte del Login y Consumo de APIs para obtener credenciales en Angular
+# Reporte del Login y Consumo de APIs públicas
 
 ## Objetivo del proyecto
 El propósito de este proyecto es desarrollar una aplicación en Angular que permita a los usuarios iniciar sesión y, las credenciales para el login son obtenidas por una API pública proporcionada por la profesora. Tras tras la autenticación, visualizar una lista de los datos obtenidos desde otra API pública elegida a nuestro críterio, en este caso, personajes de la serie Rick and Morty. Para la construcción del proyecto, se utilizan componentes y servicios de Angular Material para la creación de una interfaz moderna y funcional.
