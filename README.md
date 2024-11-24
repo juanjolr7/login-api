@@ -524,6 +524,16 @@ ng serve -o
 
 ![Captura de pantalla 2024-11-23 213810](https://github.com/user-attachments/assets/63133fca-40ba-48d0-b529-7f0d20d41d8f)
 
+### Aplicación de filtro sobre la tabla
+
+![Captura de pantalla 2024-11-23 215840](https://github.com/user-attachments/assets/d208cc64-b44e-45fb-84cd-5a43e5667bba)
+
+### Aplicación de paginación
+
+![Captura de pantalla 2024-11-23 215945](https://github.com/user-attachments/assets/129ecf2a-5f57-4b67-9ebb-f8c9e488d625)
+
+![Captura de pantalla 2024-11-23 220015](https://github.com/user-attachments/assets/4e4483ce-2bfd-42f6-9482-618227fa61ee)
+
 ## Conclusión
 
 El desarrollo de esta aplicación en Angular, que integra un sistema de autenticación y el consumo de API's públicas, lo cual permitió profundizar en conceptos clave del framework, como la creación de servicios, el uso de componentes reutilizables y la implementación de Angular Material para mejorar la interfaz de usuario. La separación entre la lógica de negocio y la presentación, lograda a través de los servicios, garantiza un código más modular y fácil de mantener.
