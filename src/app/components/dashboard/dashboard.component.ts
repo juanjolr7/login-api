@@ -8,8 +8,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { CharacterListComponent } from '../character-list/character-list.component';
+import { SidebarComponent } from "../sidebar/sidebar.component";
+import { CharacterListComponent } from "../character-list/character-list.component";
 
 @Component({
   selector: 'app-dashboard',

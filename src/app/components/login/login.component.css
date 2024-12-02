@@ -12,6 +12,7 @@
     width: 350px;
     border-radius: 16px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background-color: #303f9f;
   }
   
   .login-card h2 {
@@ -38,4 +39,3 @@
   .login-button:hover {
     background-color: #303f9f;
   }
-  
