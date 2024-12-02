@@ -40,7 +40,6 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    // Verificar si existe un usuario con el email y password proporcionados
     const userExists = this.users.find(
       (user) => user.email === this.username && user.password === this.password
     );

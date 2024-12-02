@@ -25,14 +25,12 @@ import { SeeCharacterDialogComponent } from '../see-character-dialog/see-charact
     MatInputModule,
     MatSortModule,
   ],
-  templateUrl: './character-list.component.html',
-  styleUrls: ['./character-list.component.css'],
+  templateUrl: './character-list.component.html'
 })
 export class CharacterListComponent implements OnInit, AfterViewInit {
   characters: Character[] = [];
   displayedColumns: string[] = ['id', 'image', 'name', 'status', 'species', 'acciones'];
   dataSource = new MatTableDataSource<Character>();
-
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -57,7 +55,7 @@ export class CharacterListComponent implements OnInit, AfterViewInit {
         species: character.species,
         image: character.image,
       }));
-      this.dataSource.data = this.characters; // Asignar datos al dataSource
+      this.dataSource.data = this.characters;
       console.log(this.characters);
     });
   }
@@ -74,9 +72,8 @@ export class CharacterListComponent implements OnInit, AfterViewInit {
       cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
-        // Método para eliminar un elemento
         this.characters = this.characters.filter(character => character.id !== id);
-        this.dataSource.data = this.characters; // Actualizar el dataSource
+        this.dataSource.data = this.characters;
         console.log(this.characters);
         Swal.fire({
           title: "Eliminado!",
@@ -98,7 +95,7 @@ export class CharacterListComponent implements OnInit, AfterViewInit {
         const index = this.characters.findIndex(c => c.id === character.id);
         if (index !== -1) {
           this.characters[index] = { ...this.characters[index], ...result };
-          this.dataSource.data = [...this.characters]; // Refrescar dataSource
+          this.dataSource.data = [...this.characters];
         }
       }
     });
@@ -115,13 +112,12 @@ export class CharacterListComponent implements OnInit, AfterViewInit {
         const index = this.characters.findIndex(c => c.id === character.id);
         if (index !== -1) {
           this.characters[index] = { ...this.characters[index], ...result };
-          this.dataSource.data = [...this.characters]; // Refrescar dataSource
+          this.dataSource.data = [...this.characters];
         }
       }
     });
   }
   
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
